@@ -34,7 +34,7 @@
 &trans &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT      &kp CARET &kp AMPS &kp STAR &trans &trans    &kp PIPE
 &trans &trans   &trans &trans   &trans   &trans         &trans    &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans
 &trans &trans   &trans &kp LBKT &kp RBKT &trans         &trans    &trans   &trans   &trans &trans    &trans
-                       &trans   &trans   &trans         &trans    &trans   &trans
+                       &trans   &trans   &trans         &trans    &trans   &bootloader
                         >;
                 };
         };
