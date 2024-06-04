@@ -1,41 +1,75 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/mouse.h>
 
 #define DEFAULT 0
 #define LOWER   1
 #define UPPER   2
 
 / {
-        keymap {
-                compatible = "zmk,keymap";
+    keymap {
+        compatible = "zmk,keymap";
 
-                default_layer {
-                        bindings = <
-&kp TAB       &kp Q &kp W &kp E  &kp R     &kp T        &kp Y &kp U    &kp I     &kp O   &kp P    &kp EQUAL
-&mt LCTRL ESC &kp A &kp S &kp D  &kp F     &kp G        &kp H &kp J    &kp K     &kp L   &kp SEMI &kp SQT
-&kp GRAVE     &kp Z &kp X &kp C  &kp V     &kp B        &kp N &kp M    &kp COMMA &kp DOT &kp FSLH &kp MINUS
-                    &kp LGUI     &mo LOWER &kp SPACE    &mt LSHIFT RET &mo UPPER &kp RALT
-                        >;
-                };
-
-                lower_layer {
-                        bindings = <
-&bt BT_CLR &kp N1   &kp N2   &kp N3    &kp N4   &kp N5           &kp N6   &kp N7   &kp N8   &kp N9 &kp N0    &kp BSLH
-&trans     &trans   &trans   &kp LPAR  &kp RPAR &trans           &kp BSPC &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans
-&trans     &kp LBKT &kp RBKT &kp LBRC  &kp RBRC &trans           &trans   &trans   &trans   &trans &trans    &trans
-                             &trans    &trans   &trans           &trans   &trans &trans
-                        >;
-                };
-
-                raise_layer {
-                        bindings = <
-&trans &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT      &kp CARET &kp AMPS &kp STAR &trans &trans    &kp PIPE
-&trans &trans   &trans &trans   &trans   &trans         &trans    &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans
-&trans &trans   &trans &kp LBKT &kp RBKT &trans         &trans    &trans   &trans   &trans &trans    &trans
-                       &trans   &trans   &trans         &trans    &trans   &trans
-                        >;
-                };
+        Base {
+            bindings = <
+&kp TAB  &kp Q       &kp W           &kp E        &kp R         &kp T          &kp Y         &kp U            &kp I         &kp O       &kp P          &none
+&kp ESC  &mt LCMD A  &mt LEFT_ALT S  &mt LCTRL D  &mt LSHIFT F  &kp G          &kp H         &mt LSHIFT J     &mt LCTRL K   &mt LALT L  &mt LGUI SEMI  &none
+&none    &kp Z       &kp X           &kp C        &kp V         &kp B          &kp N         &kp M            &kp COMMA     &kp DOT     &kp FSLH       &none
+                                     &mo 3        &mo 1         &lt 2 SPACE    &lt 5 RETURN  &lt 4 BACKSPACE  &lt 6 DELETE
+            >;
         };
+
+        Navigation {
+            bindings = <
+&none  &none     &none     &none      &none       &none    &none    &none     &none       &none   &none      &none
+&none  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHIFT  &none    &none    &kp LEFT  &kp DOWN    &kp UP  &kp RIGHT  &none
+&none  &none     &none     &none      &none       &none    &none    &none     &none       &none   &none      &none
+                           &none      &none       &none    &kp RET  &kp BSPC  &kp DELETE
+            >;
+        };
+
+        Mouse {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        Media {
+            bindings = <
+&none  &none     &none     &none      &none       &none    &none       &none       &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &none  &none
+&none  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHIFT  &none    &none       &none       &kp C_VOLUME_DOWN     &kp C_VOL_UP          &none  &none
+&none  &none     &none     &none      &none       &none    &none       &none       &none                 &none                 &none  &none
+                           &none      &none       &none    &kp C_STOP  &kp C_PLAY  &kp K_MUTE
+            >;
+        };
+
+        Number {
+            bindings = <
+&none  &kp LBKT   &kp N7  &kp N8   &kp N9  &kp RBKT     &none  &none       &none      &none     &none     &none
+&none  &kp SEMI   &kp N4  &kp N5   &kp N6  &kp EQUAL    &none  &kp LSHIFT  &kp LCTRL  &kp LALT  &kp LGUI  &none
+&none  &kp GRAVE  &kp N1  &kp N2   &kp N3  &kp BSLH     &none  &none       &none      &none     &none     &none
+                          &kp DOT  &kp N0  &kp MINUS    &none  &none       &none
+            >;
+        };
+
+        Symbol {
+            bindings = <
+&none  &kp LEFT_BRACE  &kp AMPS    &kp ASTRK    &kp LPAR   &kp RBRC     &none  &none       &none      &none     &none     &none
+&none  &kp COLON       &kp DOLLAR  &kp PERCENT  &kp CARET  &kp PLUS     &none  &kp LSHIFT  &kp LCTRL  &kp LALT  &kp LGUI  &none
+&none  &kp TILDE       &kp EXCL    &kp AT       &kp HASH   &kp PIPE     &none  &none       &none      &none     &none     &none
+                                   &kp LPAR     &kp RPAR   &kp MINUS    &none  &none       &none
+            >;
+        };
+
+        Function {
+            bindings = <
+&none  &kp F12  &kp F7  &kp F8  &kp F9  &kp SYSREQ        &none  &none       &none      &none     &none     &none
+&none  &kp F11  &kp F4  &kp F5  &kp F6  &kp SCROLLLOCK    &none  &kp LSHIFT  &kp LCTRL  &kp LALT  &kp LGUI  &none
+&none  &kp F10  &kp F1  &kp F2  &kp F3  &kp C_PAUSE       &none  &none       &none      &none     &none     &none
+                        &none   &none   &kp SPACE         &none  &none       &none
+            >;
+        };
+    };
 };
